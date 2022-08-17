@@ -1,0 +1,148 @@
+body {
+	background: #e2e2e2 !important;
+}
+
+.bg-primary {
+	background: rgb(68, 172, 187) !important;
+}
+
+.banner {
+	width: 100%;
+	height: 93vh;
+	background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),
+		url("../img/banner.jpg");
+	background-size: cover;
+	color: white;
+}
+
+/* profile phonto css on sigle contact */
+
+.profile_picture{
+	height: 40px;
+	width: 40px;
+	object-fit:cover;
+	border-radius: 50%;
+}
+
+
+/* ---------------side bar ----------- */
+@media only screen and (max-width: 600px) {
+	.sidebar {
+		display: none;
+		width: 80% !important;
+		background: white;
+		height: 100vh;
+		position: fixed;
+		padding-top: 20px;
+	}
+	.content {
+		margin-left: 0% !important;
+	}
+}
+/* ------------------for above 600px screen------------ */
+.sidebar {
+	width: 18%;
+	background:white;
+	height: 100%;
+	position: fixed;
+	padding-top: 5px;
+	z-index: 9999999;
+}
+
+.sidebar a {
+	display: block;
+	width: 100%;
+	padding: 20px 30px;
+	text-decoration: none;
+	color: gray;
+	font-size: 18px;
+}
+
+.sidebar a:hover {
+	background:rgb(158, 154, 216);
+	font-size: 18px;
+	font-weight:bold;
+	color: rgb(255, 255, 255);
+	
+	
+}
+
+.sidebar .divider {
+	height: 2.5px;
+	width: 100%;
+	background: #e2e2e2;
+	margin-top: 10px;
+}
+
+
+
+.content {
+	margin-left: 20%;
+}
+
+
+
+
+/* The button used to open the sidebar */
+.content .openbtn {
+	font-size: 20px;
+	cursor: pointer;
+	color: blue;
+	padding: 10px 15px;
+	border: none;
+	transition:0.4s;
+}
+
+.content .openbtn:hover {
+	
+	font-size:25px;
+	color: green;
+	transition:0.4s;
+}
+
+
+
+
+/* sidebar link activation*/
+
+.active{
+	background:rgb(158, 154, 216) !important;
+	color: white !important;
+}
+
+
+.nactive{
+	background:rgb(68, 172, 187) !important;
+	color: rgb(128, 255, 128) !important;
+}
+
+
+.bg-xyz{
+		background: rgb(158, 154, 216)!important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

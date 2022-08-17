@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="librarian/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+
+
+	<title>Document</title>
+</head>
+
+<body>
+
+	<section>
+
+		<div class="container">
+			<br>
+
+			<div class="col-md-11">
+				<div class="card">
+					<header class="card-header  bg-primary">
+
+						<h4 class="text-center card-title mt-2 text-white">UPDATE BOOK</h4>
+					</header>
+					<article class="card-body">
+
+						<div class="container text-center">
+							<img style="width: 160px" alt="" th:src="@{/img/books.png}">
+						</div>
+
+						<form action="" th:action="@{/librarian/process_updateform}" method="POST" th:object="${book}">
+							<input type="hidden" name="id" class="form-control" id="name_field"
+								required="required" th:value="${book.id}">
+
+
+							<div class="form-group">
+								<label for="">Book name </label>
+								<input type="text" name="name" class="form-control" id="name_field"
+									placeholder="Enter Book Name" required="required" th:value="${book.name}">
+
+								<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}">
+
+								</div>
+							</div>
+
+
+
+
+
+							<div class="form-group">
+								<label for="">Book Title </label>
+								<input type="text" class="form-control" id="title_field" placeholder="Enter book title"
+									name="title" th:value="${book.title}" required="required">
+							</div>
+							
+							
+							<div class="form-group">
+								<label for="">Author </label>
+								<input type="text" class="form-control" id="authur_field" placeholder="Enter book author"
+									name="author" th:value="${book.author}" required="required">
+							</div>
+							
+							
+							<div class="form-field">
+								<textarea name="description" id="description_field" rows="10" class="form-control"
+									placeholder="Enter book Description" th:text="${book.description}"></textarea>
+							</div>
+							<br>
+
+							<div class="container text-center">
+
+
+								<button type="submit" class="btn bg-primary btn-block text-white">UPDATE</button>
+							</div>
+							<!-- form-group// -->
+						</form>
+					</article>
+					<!-- card-body end .// -->
+
+				</div>
+				<!-- card.// -->
+			</div>
+			<!-- col.//-->
+			<!-- row.//-->
+		</div>
+		<!--container end.//-->
+		<br> <br>
+
+		<!-- Adding tinyMCE  -->
+
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");
+				$("#books").addClass("active");
+			});
+		</script>
+	</section>
+</body>
+
+</html>

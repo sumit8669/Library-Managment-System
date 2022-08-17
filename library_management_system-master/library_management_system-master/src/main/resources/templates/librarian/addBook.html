@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="librarian/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+
+
+	<title>Document</title>
+</head>
+
+<body>
+
+	<section>
+
+		<div class="container">
+			<br>
+
+			<div class="col-md-11">
+				<div class="card">
+					<header class="card-header  bg-primary">
+
+						<h4 class="text-center card-title mt-2 text-white">Add Book</h4>
+					</header>
+					<article class="card-body">
+
+
+
+
+						<!-- Adding alert message-->
+						<div class="container text-center">
+
+
+							<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert"
+								role="alert">
+								<p th:text="${session.message.content}"></p>
+								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+							</div>
+						</div>
+
+
+
+						<div class="container text-center">
+							<img style="width: 160px" alt="" th:src="@{/img/books.png}">
+						</div>
+
+						<form action="" th:action="@{/librarian/processform}" method="POST" th:object="${book}">
+
+
+
+
+							<div class="form-group row">
+								<label for="Book_name" class="col-sm-2 col-form-label">Book Name</label>
+								<div class="col-sm-10">
+									<input type="text" name="name" class="form-control"
+										th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}"
+										id="name_field" placeholder="Enter Book Name" required="required"
+										th:value="${book.name}">
+
+									<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}"
+										th:text="${e}">
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+							<div class="form-group row">
+								<label for="Title" class="col-sm-2 col-form-label">Title</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="title_field"
+										th:classappend="${#fields.hasErrors('title') ? 'is-invalid' : ''}"
+										placeholder="Enter Book Title" name="title" th:value="${book.title}"
+										required="required">
+
+									<div class="invalid-feedback" th:each="e : ${#fields.errors('title')}"
+										th:text="${e}">
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+							<div class="form-group row">
+								<label for="Author" class="col-sm-2 col-form-label">Authur</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="author_field"
+										th:classappend="${#fields.hasErrors('author') ? 'is-invalid' : ''}"
+										placeholder="Enter Author name" name="author" required="required">
+
+
+									<div class="invalid-feedback" th:each="e : ${#fields.errors('author')}"
+										th:text="${e}">
+									</div>
+
+								</div>
+							</div>
+
+
+
+
+
+							<div class="form-group row">
+								<label for="Description" class="col-sm-2 col-form-label">Description</label>
+								<div class="col-sm-10">
+									<textarea name="description" id="description_field" rows="10" class="form-control"
+										placeholder="Enter book description" th:text="${book.description}"></textarea>
+								</div>
+							</div>
+
+
+
+
+
+							<br>
+
+
+							<div class="container text-center">
+
+								<button type="reset" class="btn btn-warning btn-block text-white">Reset</button>
+								<button type="submit" class="btn bg-primary btn-block text-white">Submit</button>
+							</div>
+							<!-- form-group// -->
+						</form>
+					</article>
+					<!-- card-body end .// -->
+
+				</div>
+				<!-- card.// -->
+			</div>
+			<!-- col.//-->
+			<!-- row.//-->
+		</div>
+		<!--container end.//-->
+		<br> <br>
+
+		<!-- Adding tinyMCE  -->
+
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");
+				$("#add-book").addClass("active");
+			});
+		</script>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="librarian/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="container text-center">
+		   <div class="card">
+		      <div class="card-body my-5">
+		         <img 
+						style="height: 250px; width: 250px; border-radius: 30%; object-fit: cover;"
+						th:src="@{/img/books.png}">
+						
+					<h1 class="text-center text-secondary mt-5"></h1>	
+		     
+		            <a th:href="@{/librarian/add_book}" class="btn mt-5 btn-primary btn-block">Add A Book</a>
+		     
+		      </div>
+		   </div>
+		</div>
+
+      <script>
+		  $(document).ready(() => {
+			  $(".item").removeClass("active");
+			  $("#home").addClass("active");
+		  });
+		</script>
+
+	</section>
+
+
+
+</body>
+</html>

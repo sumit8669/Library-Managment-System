@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="card mr-4 ml-4">
+			<div class="card-body">
+				<h1 class="text-center">Librarians</h1>
+
+
+
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead class="bg-primary">
+
+
+
+
+							<tr>
+								<th scope="col" >#ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Email</th>
+								<th scope="col">Action</th>
+							</tr>
+
+						</thead>
+
+
+						<tbody>
+
+							<tr th:each="user:${users}">
+								<th scope="row" th:text="${user.id}">1</th>
+								<td>
+									<span th:text="${user.name}"></span>
+								</td>
+								<td>
+									<a th:href="@{'/admin/view_librarian/'+${user.id}}"><span
+											th:text="${user.email}"></span></a>
+								</td>
+								<td>
+
+									<div class="btn-group ">
+
+										<a th:onclick="|deleteLibrarian(${user.id})|"
+											class="btn btn-warning btn-s mr-2">DELETE</a>
+
+										<form th:method="post" th:action="@{'/admin/update_librarian/'+${user.id}}">
+											<button class="btn btn-success btn-s">Update</button>
+										</form>
+									</div>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");
+				$("#librarians").addClass("active");
+			});
+		</script>
+
+
+
+	</section>
+
+</body>
+
+</html>

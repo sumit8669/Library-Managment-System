@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+
+
+	<title>Document</title>
+</head>
+
+<body>
+
+	<section>
+
+		<div class="container">
+			<br>
+
+			<div class="col-md-11">
+				<div class="card">
+					<header class="card-header  bg-primary">
+
+						<h4 class="text-center card-title mt-2 text-white">UPDATE LIBRARIAN</h4>
+					</header>
+					<article class="card-body">
+
+
+
+
+						<!-- Adding alert message-->
+						<div class="container text-center">
+
+
+
+						</div>
+
+
+						<!-- adding regitration page logo image -->
+
+						<div class="container text-center">
+							<img style="width: 160px" alt="" th:src="@{/img/librarian.png}">
+						</div>
+
+						<form action="" th:action="@{/admin/process_updateform}" method="POST" th:object="${librarian}">
+
+
+							<input type="hidden" name="id" class="form-control" id="name_field" required="required"
+								th:value="${librarian.id}">
+
+
+							<fieldset disabled>
+								<div class="form-group row mt-5">
+									<label for="Librarian_ID" class="col-sm-2 col-form-label">Librarian ID</label>
+									<div class="col-sm-10">
+										<input type="id" class="form-control" id="id_field" name="id"
+											th:value="${librarian.id}">
+									</div>
+								</div>
+							</fieldset>
+
+
+							<fieldset disabled>
+								<div class="form-group row ">
+									<label for="Librarian_ID" class="col-sm-2 col-form-label">Email</label>
+									<div class="col-sm-10">
+										<input type="email" class="form-control" id="email_field" name="email"
+											th:value="${librarian.email}">
+									</div>
+								</div>
+							</fieldset>
+
+
+							<div class="form-group row ">
+								<label for="Librarian_ID" class="col-sm-2 col-form-label">Name</label>
+								<div class="col-sm-10">
+									<input type="text" name="name" class="form-control" id="name_field"
+										placeholder="Enter Your Name" required="required" th:value="${librarian.name}">
+
+									<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}"
+										th:text="${e}">
+
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="form-group row ">
+								<label for="Librarian_ID" class="col-sm-2 col-form-label">About</label>
+								<div class="col-sm-10">
+									<textarea name="about" id="about_field" rows="10" class="form-control"
+										placeholder="Enter about Librarian" th:text="${librarian.about}"></textarea>
+
+								</div>
+							</div>
+				</div>
+
+
+
+
+
+				<br>
+
+
+				<div class="container text-center">
+
+
+					<button type="submit" class="btn bg-primary btn-block text-white">UPDATE</button>
+				</div>
+				<!-- form-group// -->
+				</form>
+				</article>
+				<!-- card-body end .// -->
+
+			</div>
+			<!-- card.// -->
+		</div>
+		<!-- col.//-->
+		<!-- row.//-->
+		</div>
+		<!--container end.//-->
+		<br> <br>
+
+		<!-- Adding tinyMCE  -->
+
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+
+
+
+	</section>
+</body>
+
+</html>

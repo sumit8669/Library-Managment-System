@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+
+
+	<title>Document</title>
+</head>
+
+<body>
+
+	<section>
+
+		<div class="container">
+			<br>
+
+			<div class="col-md-11">
+				<div class="card">
+					<header class="card-header  bg-primary">
+
+						<h4 class="text-center card-title mt-2 text-white">ADD LIBRARIAN</h4>
+					</header>
+					<article class="card-body">
+
+
+
+
+						<!-- Adding alert message-->
+						<div class="container text-center">
+
+
+							<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert"
+								role="alert">
+								<p th:text="${session.message.content}"></p>
+								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+							</div>
+						</div>
+
+
+						<!-- adding regitration page logo image -->
+
+						<div class="container text-center mb-5">
+							<img style="width: 160px" alt="" th:src="@{/img/librarian.png}">
+						</div>
+
+						<form action="" th:action="@{/admin/processform}" method="POST" th:object="${user}">
+
+
+
+
+							<div class="form-group row">
+								<label for="Librarian_Name" class="col-sm-2 col-form-label">Librarian name</label>
+								<div class="col-sm-10">
+									<input type="text" name="name" class="form-control"
+										th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}"
+										id="name_field" placeholder="Enter Your Name" required="required"
+										th:value="${user.name}">
+
+									<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}"
+										th:text="${e}">
+
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="form-group row">
+								<label for="Email" class="col-sm-2 col-form-label">Email</label>
+								<div class="col-sm-10">
+									<input type="email" class="form-control"
+									
+										th:classappend="${#fields.hasErrors('email') ? 'is-invalid' : ''}"
+										
+										required="required"
+										id="email_field" placeholder="Enter Email" name="email"
+										th:value="${user.email}">
+
+									<div class="invalid-feedback" th:each="error : ${#fields.errors('email')}"
+										th:text="${error}">
+
+									</div>
+
+								</div>
+							</div>
+
+
+							<div class="form-group row">
+								<label for="Email" class="col-sm-2 col-form-label">Password</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="password_field"
+										placeholder="Enter password" name="password" required="required"
+										th:classappend="${#fields.hasErrors('password') ? 'is-invalid' : ''}">
+										
+										
+										<div class="invalid-feedback" th:each="error : ${#fields.errors('password')}"
+										th:text="${error}">
+
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group row">
+								<label for="Email" class="col-sm-2 col-form-label">About</label>
+								<div class="col-sm-10">
+									<textarea name="about" id="about_field" rows="10" class="form-control"
+										placeholder="Enter about Librarian" th:text="${user.about}"></textarea>
+								</div>
+							</div>
+
+
+							<br>
+
+							<!-- Adding reset and submit button for form -->
+
+							<div class="container text-center">
+
+								<button type="reset" class="btn btn-warning btn-block text-white">Reset</button>
+								<button type="submit" class="btn bg-primary btn-block text-white">Submit</button>
+							</div>
+							<!-- form-group// -->
+						</form>
+					</article>
+					<!-- card-body end .// -->
+
+				</div>
+				<!-- card.// -->
+			</div>
+			<!-- col.//-->
+			<!-- row.//-->
+		</div>
+		<!--container end.//-->
+		<br> <br>
+
+		<!-- Adding tinyMCE  -->
+
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");
+				$("#add-librarian").addClass("active");
+			});
+		</script>
+	</section>
+</body>
+
+</html>

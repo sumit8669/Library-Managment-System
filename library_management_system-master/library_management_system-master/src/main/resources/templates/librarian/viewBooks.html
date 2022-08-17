@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="librarian/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="card mr-4 ml-4">
+			<div class="card-body">
+				<h1 class="text-center">Books</h1>
+
+
+
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead class="bg-primary">
+
+
+
+
+							<tr>
+								<th scope="col" >#ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Author</th>
+								<th scope="col">Action</th>
+							</tr>
+
+						</thead>
+
+
+						<tbody>
+
+							<tr th:each="book:${books}">
+								<th scope="row" th:text="${book.id}">1</th>
+								
+								<td>
+									<a th:href="@{'/librarian/view_book/'+${book.id}}"><span
+											th:text="${book.name}"></span></a>
+								</td>
+								<td>
+									<span th:text="${book.author}"></span>
+								</td>
+								
+								<td>
+
+									<div class="btn-group ">
+
+										<a th:onclick="|deleteBook(${book.id})|"
+											class="btn btn-warning btn-s mr-2">DELETE</a>
+
+										<form th:method="post" th:action="@{'/librarian/update_book/'+${book.id}}">
+											<button class="btn btn-success btn-s">Update</button>
+										</form>
+									</div>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");
+				$("#books").addClass("active");
+			});
+		</script>
+
+
+
+	</section>
+
+</body>
+
+</html>
