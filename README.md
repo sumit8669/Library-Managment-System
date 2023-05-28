@@ -1,19 +1,5 @@
 # Library-Managment-System helps librarians for managing all records of students and books
-
-SOLID Design Principles.
-
-
-
-
-
-
-in mind throughout the development process. The app should be easy to use and provide valuable advice to users.
-
-
-
-
-
-Library-Managment-System helps librarians for managing all records of students and books
+#### Library-Managment-System helps librarians for managing all records of students and books
 
 A Library Management System is a software application that is designed to help librarians manage all records of students and books in a library. It helps to automate and streamline various library processes, including book acquisition, cataloging, circulation, and inventory management. Here are some of the key features of a Library Management System:
 
